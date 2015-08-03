@@ -8,6 +8,10 @@
  Features nice to have:
 
  EAN prüfen  12 oder 13 stellig
+ CSV Export
+ Eingabe Versandkosten einmalig? pro Artikel?
+ Eingabe Marge einmalig? pro Artikel?
+ 
  */
 public class Main
 {
