@@ -7,18 +7,18 @@
 
  Features nice to have:
 
- EAN prüfen  12 oder 13 stellig
+ Number prüfen  12 oder 13 stellig
  CSV Export
  Eingabe Versandkosten einmalig? pro Artikel?
  Eingabe Marge einmalig? pro Artikel?
- 
+
  */
 public class Main
 {
 	public static void main(String [] args)
 	{
 		int InputMarketplace;
-		int itemEAN = 0;
+		int itemNumber = 0;
 		int invalid;
 		int invalid2;
 		double inputPurchasePrice = 0;
@@ -87,8 +87,8 @@ public class Main
 				}
 				else
 				{
-					System.out.println("Bitte geben Sie die EAN des Artikels ein: ");
-					itemEAN = In.readInt();
+					System.out.println("Bitte geben Sie die Nummer des Artikels ein: ");
+					itemNumber = In.readInt();
 
 					System.out.println("Bite geben Sie den Einkaufspreis (netto) ein: ");
 					inputPurchasePrice = In.readDouble();
@@ -133,7 +133,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikel - Nummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -145,7 +145,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -157,7 +157,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -169,7 +169,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -181,7 +181,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -193,7 +193,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -205,7 +205,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -217,7 +217,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -229,7 +229,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -241,7 +241,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -253,7 +253,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -265,7 +265,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -277,7 +277,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -289,7 +289,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -301,7 +301,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -313,7 +313,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -325,7 +325,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -337,7 +337,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -349,7 +349,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -361,7 +361,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -373,7 +373,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -385,7 +385,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -397,7 +397,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -409,7 +409,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -421,7 +421,7 @@ public class Main
 					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - EAN: " + itemEAN);
+					System.out.println("Artikelnummer: " + itemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
