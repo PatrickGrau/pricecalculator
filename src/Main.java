@@ -30,7 +30,7 @@ public class Main
 		{
 			System.out.println("");
 			System.out.println("");
-			System.out.println("Preiskalkulator v. 0.8 von Patrick Grau");
+			System.out.println("Preiskalkulator v. 0.8 von Java Elite");
 			System.out.println("");
 			System.out.println("");
 			System.out.println("");
