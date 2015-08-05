@@ -2,33 +2,43 @@
 /**
  BUG TRACKING:
 
- #1 Abbruch in der Whileschleife (Eingabe 25) funktioniert nicht
+ #1 Abbruch in der Whileschleife (Eingabe 25) funktioniert nicht -> fix 05.08.2015 um 09:55 Uhr
+
+
+ Wichtige Änderungen, die erledigt werden müssen:
+
+ #1 itemNumber kann vom Kunden ja auch like "1234.HF.lol.1234%" erfolgen
+ Somit muss int entfernt werden und ein String abgefragt werden. -> feature erledigt 05.08. 10:10 Uhr
 
 
  Features nice to have:
 
- Number prüfen  12 oder 13 stellig
- CSV Export
- Eingabe Versandkosten einmalig? pro Artikel?
- Eingabe Marge einmalig? pro Artikel?
+ #1 Kunden entscheiden lassen ob Eingabge Nummer oder EAN -> EAN muss abgefragt werden ob 12 oder 13 Stellig. Da sonst ungültig.
+ #2 Marge in % eingeben lassen -> bei plenty allerdings % wegfallen lassen, sonst kann glaube ich nicht gerechnet werden.
+ #3 VK Brutto und Netto runden lassen auf 2 Nachkommastellen (Kaufmännisches runden)
+ #4 CSV Export
+ #6 GUI
+ #5 SOAP Anbindung zu plentymarkets
 
  */
 public class Main
 {
 	public static void main(String [] args)
 	{
-		int InputMarketplace;
-		int itemNumber = 0;
-		int invalid;
-		int invalid2;
+		int inputMarketplace;
+		int invalid = 0;
+		int invalid2 = 0;
+		String inputItemNumber = "null";
 		double inputPurchasePrice = 0;
+		double inputMarge = 0;
+		double inputShippingCostNet = 0;
+		double itemVAT = 0;
 		double salesPriceNet;
 		double salesPriceGross;
-		double shippingCostNet;
-		double marge;
 		double marketplaceChargePercent;
 		double marketplaceChargeValue;
-		double itemVAT = 0;
+
+
 
 		do
 		{
@@ -73,25 +83,31 @@ public class Main
 			{
 				System.out.println("Ihre Eingabe: ");
 
-				InputMarketplace = In.readInt();
+				inputMarketplace = In.readInt();
 
-				if (InputMarketplace > 25)
+				if (inputMarketplace > 25)
 				{
 					System.out.println("Ungültige Eingabe");
 					invalid = 1;
 				}
-				else if (InputMarketplace < 0)
+				else if (inputMarketplace < 0)
 				{
 					System.out.println("Ungültige Eingabe");
 					invalid = 1;
 				}
-				else
+				else if (inputMarketplace != 25)
 				{
-					System.out.println("Bitte geben Sie die Nummer des Artikels ein: ");
-					itemNumber = In.readInt();
+					System.out.println("Bitte geben Sie die Artikelnummer ein: ");
+					inputItemNumber = In.readString();
 
 					System.out.println("Bite geben Sie den Einkaufspreis (netto) ein: ");
 					inputPurchasePrice = In.readDouble();
+
+					System.out.println("Bitte geben Sie die Marge in % ein: ");
+					inputMarge = In.readDouble();
+
+					System.out.println("Bitte geben Sie die Versandkosten (netto) für diesen Artikel an: ");
+					inputShippingCostNet = In.readDouble();
 
 					do
 					{
@@ -118,310 +134,30 @@ public class Main
 							invalid2= 1;
 						}
 					} while(invalid2 != 1);
-					invalid = 0;
+
 				}
 			}while(invalid == 1);
 
 
-			switch(InputMarketplace)
+			switch(inputMarketplace)
 			{
 				case 0:
-					marge = 1.1;
-					shippingCostNet = 0;
 					marketplaceChargePercent = 1.12;
 					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
+					salesPriceGross = ((((inputPurchasePrice + inputShippingCostNet)*itemVAT)*inputMarge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikel - Nummer: " + itemNumber);
+					System.out.println("Artikel - Nummer: " + inputItemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
 				case 1:
-					marge = 1.1;
-					shippingCostNet = 0;
 					marketplaceChargePercent = 1.12;
 					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
+					salesPriceGross = ((((inputPurchasePrice + inputShippingCostNet)*itemVAT)*inputMarge)*marketplaceChargePercent)+marketplaceChargeValue;
 					salesPriceNet = salesPriceGross / itemVAT;
 
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 2:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 3:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 4:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 5:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 6:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 7:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 8:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 9:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 10:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 11:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 12:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 13:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 14:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 15:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 16:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 17:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 18:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 19:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 20:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 21:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 22:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 23:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
-					break;
-				case 24:
-					marge = 1.1;
-					shippingCostNet = 0;
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + shippingCostNet)*itemVAT)*marge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + itemNumber);
+					System.out.println("Artikelnummer: " + inputItemNumber);
 					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
 					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 					break;
@@ -431,7 +167,7 @@ public class Main
 
 
 
-		}while(InputMarketplace!=25);
+		}while(inputMarketplace!=25);
 
 
 
