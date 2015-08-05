@@ -2,13 +2,12 @@
 /**
  BUG TRACKING:
 
- #1 Abbruch in der Whileschleife (Eingabe 25) funktioniert nicht -> fix 05.08.2015 um 09:55 Uhr
+ #1 ???
 
 
  Wichtige Änderungen, die erledigt werden müssen:
 
- #1 itemNumber kann vom Kunden ja auch like "1234.HF.lol.1234%" erfolgen
- Somit muss int entfernt werden und ein String abgefragt werden. -> feature erledigt 05.08. 10:10 Uhr
+ #1 ???
 
 
  Features nice to have:
