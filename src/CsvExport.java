@@ -22,6 +22,7 @@ public class CsvExport
 			// new FileWriter(file) - wird überschrieben
 			writer = new FileWriter(file, true);
 
+			
 			// Text wird in den Stream geschrieben
 			writer.write("ItemNo;Price");
 
