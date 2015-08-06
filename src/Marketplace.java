@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 /**
  * Created by pgrau on 06/08/15.
  */
@@ -309,6 +311,15 @@ public class Marketplace
 		System.out.println("Artikel - Nummer: " + inputItemNumber);
 		System.out.println("Verkaufspreis Netto: " + Rounding.roundAmount(salesPriceNet));
 		System.out.println("Verkaufspreis Brutto: " + Rounding.roundAmount(salesPriceGross));
+
+		try
+		{
+			CsvExport.writeCSV(inputItemNumber, salesPriceGross);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 
 	}
 
