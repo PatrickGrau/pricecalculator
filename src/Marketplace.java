@@ -306,10 +306,9 @@ public class Marketplace
 
 	public static void output(String inputItemNumber, double salesPriceNet, double salesPriceGross)
 	{
-
-		System.out.println("Artikelnummer: " + inputItemNumber);
-		System.out.println("Verkaufspreis Netto: " + Rounding.roundAmount(salesPriceNet));
-		System.out.println("Verkaufspreis Brutto: " + Rounding.roundAmount(salesPriceGross));
+		System.out.println("Artikel - Nummer: " + inputItemNumber);
+		System.out.println("Verkaufspreis Netto: " + salesPriceNet);
+		System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
 
 	}
 
