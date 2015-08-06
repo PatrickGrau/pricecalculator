@@ -32,14 +32,8 @@ public class Main
 		double inputMarge = 0;
 		double inputShippingCostNet = 0;
 		double itemVAT = 0;
-		double salesPriceNet;
-		double salesPriceGross;
-		double marketplaceChargePercent;
-		double marketplaceChargeValue;
 
-
-
-
+		
 		do
 		{
 			System.out.println("");
