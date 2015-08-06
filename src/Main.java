@@ -7,7 +7,7 @@
 
  Wichtige Änderungen, die erledigt werden müssen:
 
- #1 ???
+ #1 CSV Export
 
 
  Features nice to have:
@@ -39,6 +39,7 @@ public class Main
 
 
 
+
 		do
 		{
 			System.out.println("");
@@ -57,7 +58,7 @@ public class Main
 			System.out.println("(4)eBay");
 			System.out.println("(5)Gimahot");
 			System.out.println("(6)grosshandel.eu");
-			System.out.println("(7)Herie");
+			System.out.println("(7)Hertie");
 			System.out.println("(8)Hitmeister");
 			System.out.println("(9)Hood");
 			System.out.println("(10)Kauflux");
@@ -141,24 +142,79 @@ public class Main
 			switch(inputMarketplace)
 			{
 				case 0:
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + inputShippingCostNet)*itemVAT)*inputMarge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikel - Nummer: " + inputItemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
+					Marketplace.calcAmazon(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
 					break;
 				case 1:
-					marketplaceChargePercent = 1.12;
-					marketplaceChargeValue = 0.35;
-					salesPriceGross = ((((inputPurchasePrice + inputShippingCostNet)*itemVAT)*inputMarge)*marketplaceChargePercent)+marketplaceChargeValue;
-					salesPriceNet = salesPriceGross / itemVAT;
-
-					System.out.println("Artikelnummer: " + inputItemNumber);
-					System.out.println("Verkaufspreis Netto: " + salesPriceNet);
-					System.out.println("Verkaufspreis Brutto: " + salesPriceGross);
+					Marketplace.calcCdiscount(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 2:
+					Marketplace.calcDaWanda(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 3:
+					Marketplace.calcFruugo(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 4:
+					Marketplace.calceBay(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 5:
+					Marketplace.calcGimahot(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 6:
+					Marketplace.calcgrosshandeleu(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 7:
+					Marketplace.calcHertie(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 8:
+					Marketplace.calcHitmeister(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 9:
+					Marketplace.calcHood(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 10:
+					Marketplace.calcKauflux(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 11:
+					Marketplace.calcLaRedoute(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 12:
+					Marketplace.calcAllyouneed(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 13:
+					Marketplace.calcMercateo(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 14:
+					Marketplace.calcPIXmania(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 15:
+					Marketplace.calcPlaycom(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 16:
+					Marketplace.calcPlusde(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 17:
+					Marketplace.calcRakuten(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 18:
+					Marketplace.calcRestposten(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 19:
+					Marketplace.calcricardo(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 20:
+					Marketplace.calcShopgate(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 21:
+					Marketplace.calcSumoNet(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 22:
+					Marketplace.calcYatego(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 23:
+					Marketplace.calcZalando(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
+					break;
+				case 24:
+					Marketplace.calcZentralverkauf(inputItemNumber, inputPurchasePrice, inputMarge, inputShippingCostNet, itemVAT);
 					break;
 
 			}
