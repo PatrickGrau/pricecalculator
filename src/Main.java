@@ -2,7 +2,7 @@
 /**
  BUG TRACKING:
 
- #1 none
+ #1 ???
 
 
  Wichtige Änderungen, die erledigt werden müssen:
@@ -33,7 +33,7 @@ public class Main
 		double inputShippingCostNet = 0;
 		double itemVAT = 0;
 
-
+		
 		do
 		{
 			System.out.println("");
