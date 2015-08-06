@@ -11,7 +11,7 @@ public class CsvExport
 	public static FileWriter writer;
 	public static File file;
 
-	public static void writeCSV(String ItemNo, double salesPriceGross) throws IOException
+	public static void writeCSV(String ItemNo, double Price) throws IOException
 	{
 		// File anlegen
 		file = new File("/Users/pgrau/Desktop/Preiskalkulation.csv");
@@ -23,13 +23,13 @@ public class CsvExport
 			writer = new FileWriter(file, true);
 
 			// Text wird in den Stream geschrieben
-			writer.write("Hallo Wie gehts?");
+			writer.write("ItemNo;Price");
 
 			// Platformunabhängiger Zeilenumbruch wird in den Stream geschrieben
 			writer.write(System.getProperty("line.separator"));
 
 			// Text wird in den Stream geschrieben
-			writer.write("Danke mir gehts gut!");
+			writer.write(ItemNo + ";"+ Price);
 
 
 			// Schreibt den Stream in die Datei
