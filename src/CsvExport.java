@@ -5,40 +5,77 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.*;
+
 
 public class CsvExport
 {
 	public static FileWriter writer;
 	public static File file;
 
+
 	public static void writeCSV(String ItemNo, double Price) throws IOException
 	{
+
 		// File anlegen
 		file = new File("/Users/pgrau/Desktop/Preiskalkulation.csv");
+
 		try
 		{
-			// new FileWriter(file ,true) - prüft ob die Datei vorhanden ist
-			// wenn ja wird am Ende weiter geschrieben
-			// new FileWriter(file) - wird überschrieben
-			writer = new FileWriter(file, true);
+			Path path = Paths.get("/Users/pgrau/Desktop/Preiskalkulation.csv");
 
-			// Text wird in den Stream geschrieben
-			writer.write("ItemNo;Price");
+			if (Files.exists(path))
+			{
+				// new FileWriter(file ,true) - prüft ob die Datei vorhanden ist
+				// wenn ja wird am Ende weiter geschrieben
+				// new FileWriter(file) - wird überschrieben
+				writer = new FileWriter(file, true);
 
-			// Platformunabhängiger Zeilenumbruch wird in den Stream geschrieben
-			writer.write(System.getProperty("line.separator"));
+				// Platformunabhängiger Zeilenumbruch wird in den Stream geschrieben
+				writer.write(System.getProperty("line.separator"));
 
-			// Text wird in den Stream geschrieben
-			writer.write(ItemNo + ";"+ Price);
+				// Text wird in den Stream geschrieben
+				writer.write(ItemNo + ";" + Price);
+
+				// Schreibt den Stream in die Datei
+				// Sollte immer am Ende ausgeführt werden, sodass der Stream
+				// leer ist und alles in der Datei steht.
+				writer.flush();
+
+				// Schließt den Stream
+				writer.close();
+
+			}
+
+			if (Files.notExists(path))
+			{
+				// new FileWriter(file ,true) - prüft ob die Datei vorhanden ist
+				// wenn ja wird am Ende weiter geschrieben
+				// new FileWriter(file) - wird überschrieben
+				writer = new FileWriter(file, true);
+
+				// Text wird in den Stream geschrieben
+				writer.write("ItemNo;Price");
 
 
-			// Schreibt den Stream in die Datei
-			// Sollte immer am Ende ausgeführt werden, sodass der Stream
-			// leer ist und alles in der Datei steht.
-			writer.flush();
+				// Platformunabhängiger Zeilenumbruch wird in den Stream geschrieben
+				writer.write(System.getProperty("line.separator"));
 
-			// Schließt den Stream
-			writer.close();
+				// Text wird in den Stream geschrieben
+				writer.write(ItemNo + ";" + Price);
+
+				// Schreibt den Stream in die Datei
+				// Sollte immer am Ende ausgeführt werden, sodass der Stream
+				// leer ist und alles in der Datei steht.
+				writer.flush();
+
+				// Schließt den Stream
+				writer.close();
+
+			}
+
+
+
 		}
 		catch (IOException e)
 		{
